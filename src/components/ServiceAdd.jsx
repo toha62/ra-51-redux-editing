@@ -1,6 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {changeServiceField, resetServiceField, addService} from '../actions/actionCreators';
+import {changeServiceField, resetServiceField, resetEditServiceField, addService} from '../actions/actionCreators';
 
 function ServiceAdd() {
 	const item = useSelector(state => state.serviceAdd);
@@ -11,6 +11,11 @@ function ServiceAdd() {
 		dispatch(changeServiceField(name, value));
 	}
 
+	const handleCancel = () => {		
+		dispatch(resetEditServiceField());
+		dispatch(resetServiceField());
+	}
+	
 	const handleSubmit = evt => {
 			evt.preventDefault();
 			dispatch(addService(item.name, item.price));
@@ -31,6 +36,7 @@ function ServiceAdd() {
 					<input className="form-control" id="price" name='price' onChange={handleChange} value={item.price} />
 				</div>
 				<button className="btn btn-secondary" type='submit'>Save</button>				
+				{item.isEdit && <button className="btn btn-secondary ml-3" type='button' onClick={handleCancel}>Cancel</button>}
 			</div>			
 		</form>
 	);
