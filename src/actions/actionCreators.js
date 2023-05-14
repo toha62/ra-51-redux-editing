@@ -1,5 +1,6 @@
 import {
   ADD_SERVICE,
+  UPDATE_SERVICE,
   REMOVE_SERVICE,
   CHANGE_SERVICE_FIELD,
   SET_EDIT_SERVICE_FIELD,
@@ -11,6 +12,10 @@ export function addService(name, price) {
   return {type: ADD_SERVICE, payload: {name, price}};
 }
 
+export function updateService(id, name, price) {
+  return {type: UPDATE_SERVICE, payload: {id, name, price}};
+}
+
 export function removeService(id) {
   return {type: REMOVE_SERVICE, payload: {id}};
 }
@@ -19,8 +24,8 @@ export function changeServiceField(name, value) {
   return {type: CHANGE_SERVICE_FIELD, payload: {name, value}}
 }
 
-export function setEditServiceField() {
-  return {type: SET_EDIT_SERVICE_FIELD}
+export function setEditServiceField(id) {
+  return {type: SET_EDIT_SERVICE_FIELD, payload: {id}}
 }
 
 export function resetEditServiceField() {
