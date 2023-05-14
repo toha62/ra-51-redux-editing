@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux';
-import {removeService} from '../actions/actionCreators';
+import {removeService, changeServiceField} from '../actions/actionCreators';
 
 function ServiceList() {
   const items = useSelector(state => state.serviceList);
@@ -8,6 +8,9 @@ function ServiceList() {
 
   const handleRemove = id => {
     dispatch(removeService(id));
+  }
+  const handleEdit = (id) => {
+    dispatch(changeService(id));
   }
 
   return (
